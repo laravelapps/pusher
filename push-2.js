@@ -145,14 +145,12 @@ function sendSubscriptionToServer(subscription) {
       return jsonObj;
     }).then(function(result) {
       console.log("result: :" + JSON.stringify(result));
-      fetch(window.location.protocol + "//" + window.location.host + "/api/v1/subscribe", {      
+      fetch(window.location.protocol + "//" + window.location.host + "/api/v1/subscribe", {
           headers: {
               'Content-Type': 'application/json'
           },
           method: 'POST',
           body: JSON.stringify(result)
-      }).then(res=>{
-        window.location.href="https://www.whatsinworld.com/latestnews.html";
       });
     });
     return Promise.resolve();
@@ -187,20 +185,20 @@ function ipLookUp() {
     });
 }
 
-//window.addEventListener('load', function () {
-//	#   var button = document.getElementById('send');
- //  button.addEventListener('click', function () {
- //      var subscription = document.getElementById('subscription').value;
+window.addEventListener('load', function () {
+   var button = document.getElementById('send');
+   button.addEventListener('click', function () {
+       var subscription = document.getElementById('subscription').value;
 
-  //     let formData = new FormData();
-  //     formData.append('subscriptionJson', subscription);
+       let formData = new FormData();
+       formData.append('subscriptionJson', subscription);
 
-    //   fetch(window.location.protocol + "//" + window.location.host + "/api/v1/send", {
-   //        method: 'POST',
-    //       body: formData
-    //   });
-   //});
-//});
+       fetch(window.location.protocol + "//" + window.location.host + "/api/v1/send", {
+           method: 'POST',
+           body: formData
+       });
+   });
+});
 
 
 
